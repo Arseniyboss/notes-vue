@@ -12,6 +12,38 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
+    <main id="app">
+      <form @submit.prevent="addNote">
+        <div class="input-group">
+          <input
+            type="text"
+            class="title-input"
+            placeholder="Enter title..."
+            v-model="title"
+            ref="titleInput"
+            autofocus
+          />
+          <input
+            type="text"
+            class="note-input"
+            placeholder="Enter note..."
+            v-model="note"
+          />
+        </div>
+        <button>Add Note</button>
+      </form>
+      <ul class="note-list">
+        <li class="note" v-for="{title, note, id} in notes" :key="id">
+          <div class="note-details">
+            <h2 v-if="title">{{title}}</h2>
+            <span v-if="note">{{note}}</span>
+          </div>
+          <button class="delete-button" @click="deleteNote(id)">
+            <i class="fa fa-trash trashcan"></i>
+          </button>
+        </li>
+      </ul>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
