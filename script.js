@@ -17,6 +17,10 @@ const app = createApp({
       this.note = ''
       this.$refs.titleInput.focus()
     },
+    deleteNote(id) {
+      const filteredNotes = this.notes.filter((note) => note.id !== id)
+      this.notes = filteredNotes
+    },
   },
 })
 
